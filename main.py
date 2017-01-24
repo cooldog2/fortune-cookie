@@ -24,18 +24,19 @@ def getRandomFortune():
         "You have tamed the mighty Python, now you ust free it onto the great spider's web"
     ]
     #randomly select one of the fortune
-    index = random.randint(0,2)
+    index = random.randint(0,2)        #ask Chie about using length of string instead
     return fortunes[index]
+    # index = random.choice(fortunes)  #Dominique said choice method is better
+    # return index
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         header = "<h1> Fortune Cookie </h1>"
 
-        fortune = "<strong>" +getRandomFortune() +"</strong>"
+        fortune = "<strong>" + getRandomFortune() + "</strong>"
         fortune_sentence = "Your fortune:" + fortune
         fortune_paragraph = "<p>" +  fortune_sentence + "</p>"
-        cookie_again_button = "<a href='.'><button>Another cookie<button></a>"
-        #hello = "<a href='http://www.w3schools.com/html/'>Visit our HTML tutorial</a>"
+        cookie_again_button = "<a href='.'><button> Another Cookie Plz! </button></a>"
 
         # lucky_number = random.randint(1,100)
         # number_sentence = "Your lucky number is: " + str(lucky_number)
@@ -45,7 +46,7 @@ class MainHandler(webapp2.RequestHandler):
 
         number_paragraph = "<p>" +  number_sentence + "</p>"
 
-        content = header + fortune_paragraph + number_paragraph
+        content = header + fortune_paragraph + number_paragraph + cookie_again_button
         self.response.write(content)
 
 app = webapp2.WSGIApplication([
